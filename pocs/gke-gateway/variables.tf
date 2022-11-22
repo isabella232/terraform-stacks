@@ -71,6 +71,15 @@ variable "vpc_subnets_secondary_ranges" {
 }
 
 #############################################################################
+# IAP proxy                                                                 #
+#############################################################################
+variable "iap_proxy_subnet_cidr_range" {
+  type        = string
+  description = "The range of internal addresses that are owned by IAP proxysubnetwork."
+  default     = null
+}
+
+#############################################################################
 # GKE cluster                                                               #
 #############################################################################
 variable "gke_cluster_name" {
