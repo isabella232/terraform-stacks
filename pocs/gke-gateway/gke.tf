@@ -8,8 +8,9 @@ data "google_compute_zones" "available" {
 }
 
 locals {
-  gke_cluster_zones  = var.gke_cluster_regional ? data.google_compute_zones.available.names : [var.region]
-  gke_cluster_region = var.gke_cluster_regional ? var.region : null
+  gke_cluster_zones              = var.gke_cluster_regional ? data.google_compute_zones.available.names : [var.region]
+  gke_cluster_region             = var.gke_cluster_regional ? var.region : null
+  gke_master_authorized_networks = var.gke_cluster_enable_private_endpoint ? [{ display_name = "allow-iap", cidr_block = var.iap_proxy_subnet_cidr_range }] : var.gke_cluster_master_authorized_networks
 }
 
 module "gke" {
@@ -32,6 +33,7 @@ module "gke" {
   enable_private_nodes        = var.gke_cluster_enable_private_nodes
   enable_intranode_visibility = var.gke_cluster_enable_intranode_visibility
   master_ipv4_cidr_block      = var.gke_cluster_master_ipv4_cidr_block
+  master_authorized_networks  = local.gke_master_authorized_networks
   # deploy_using_private_endpoint = true
 
 
