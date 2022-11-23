@@ -1,5 +1,12 @@
 # Terraform stack for ZenDesk ticket 93289
 [GCB private pools - accessing private resources](https://doitintl.zendesk.com/agent/tickets/93289)
+
+## Prerequisites
+* [Terraform 0.13+](https://developer.hashicorp.com/terraform/downloads) Tool that manages IaC (infrastructure-as-code) in diverse public cloud providers and tools.
+* [terraform-docs](https://github.com/terraform-docs/terraform-docs/releases/) Generate documentation for Terraform stacks.
+* [tflint](https://github.com/terraform-linters/tflint) Linter for Terraform stacks. Linting rules for diverse public providers.
+* [pre-commit](https://pre-commit.com/) A framework for managing and maintaining multi-language pre-commit hooks.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
